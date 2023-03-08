@@ -29,14 +29,16 @@ export default function Home() {
       <main className="relative flex flex-row flex-wrap gap-5">
         {/* play around with filtering over the results map, if searchTerm is undefined, then skip and map over the filtered array */}
         <article>
-        {searchTerm === undefined
-          ? data?.results.map((result) => (
-              <Card {...result} key={result.name} />
-            ))
-          : data?.results
-              .filter((item) => item.name.includes(searchTerm))
-              .map((item) => <Card {...item} key={`Filtered ${item.name}`} />)}
-              </article>
+          {searchTerm === undefined
+            ? data?.results.map((result) => (
+                <Card {...result} key={result.name} />
+              ))
+            : data?.results
+                .filter((item) => item.name.includes(searchTerm))
+                .map((item) => (
+                  <Card {...item} key={`Filtered ${item.name}`} />
+                ))}
+        </article>
       </main>
     </>
   );

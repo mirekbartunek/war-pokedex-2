@@ -19,7 +19,7 @@ export default function Pokemon() {
   return (
     <main className="flex items-center justify-center">
       <section>
-        <h1 className="text-3xl underline align-center">
+        <h1 className="text-3xl underline hover:italic align-center">
           {data?.name?.charAt(0)?.toUpperCase() + data?.name?.slice(1)!}
         </h1>
       </section>
