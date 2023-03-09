@@ -1,6 +1,6 @@
 export interface Res {
   height: number;
-  name: string; // pokemonName due to router
+  name: string;
   sprites: Sprites;
   stats: Stat[];
   types: Type[];
