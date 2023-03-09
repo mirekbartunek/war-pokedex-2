@@ -39,7 +39,7 @@ export default function Pokemon() {
         </article>
       </main>
     </main>
-    <ArrowLeft onClick={router.back()} classname="cursor-pointer" />
+    <ArrowLeft onClick={() => router.back()} classname="cursor-pointer" />
     </>
   );
 }
