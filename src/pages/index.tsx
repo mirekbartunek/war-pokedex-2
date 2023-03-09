@@ -11,6 +11,12 @@ export default function Home() {
     fetcher
   );
 
+  if (isLoading)
+    return (
+      <div className="flex flex-col items-center justify-center">
+        <h1 className="text-9xl">Loading...</h1>
+      </div>
+    );
   return (
     <>
       <header className="flex items-center justify-between p-1 mb-5">
@@ -26,9 +32,9 @@ export default function Home() {
           }}
         />
       </header>
-      <main className="relative flex flex-row flex-wrap gap-5">
+      <main className="flex items-center justify-center">
         {/* play around with filtering over the results map, if searchTerm is undefined, then skip and map over the filtered array */}
-        <article>
+        <article className="flex flex-row flex-wrap gap-2 align-center">
           {searchTerm === undefined
             ? data?.results.map((result) => (
                 <Card {...result} key={result.name} />
