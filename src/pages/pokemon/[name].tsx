@@ -19,27 +19,27 @@ export default function Pokemon() {
     return <h1 className="m-auto text-9xl">Zatkli me behem zrrani deti...</h1>;
   return (
     <>
-    <main className="flex flex-col items-center justify-center">
-      <header>
-        <h1 className="text-3xl underline hover:italic align-center">
-          {data?.name?.charAt(0)?.toUpperCase() + data?.name?.slice(1)!}
-        </h1>
-      </header>
-      <main>
-        <article className="flex flex-row justify-around">
-          {data?.sprites.front_default && (
-            <Image
-              src={data?.sprites.front_default}
-              alt={`${data?.name} image`}
-              width={200}
-              height={200}
-            />
-          )}
-          <div></div>
-        </article>
+      <main className="flex flex-col items-center justify-center">
+        <header>
+          <h1 className="text-3xl underline hover:italic align-center">
+            {data?.name?.charAt(0)?.toUpperCase() + data?.name?.slice(1)!}
+          </h1>
+        </header>
+        <main>
+          <article className="flex flex-row justify-around">
+            {data?.sprites.front_default && (
+              <Image
+                src={data?.sprites.front_default}
+                alt={`${data?.name} image`}
+                width={200}
+                height={200}
+              />
+            )}
+            <div></div>
+          </article>
+        </main>
       </main>
-    </main>
-    <ArrowLeft onClick={() => router.back()} classname="cursor-pointer" />
+      <ArrowLeft onClick={() => router.back()} className="cursor-pointer" />
     </>
   );
 }
