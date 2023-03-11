@@ -1,4 +1,4 @@
-export interface Res {
+export interface PokemonDetail {
   height: number;
   name: string;
   sprites: Sprites;
@@ -28,7 +28,7 @@ type Sprites = {
   back_default: string;
 };
 
-export const isValidRes = (pokemon: any): pokemon is Res => {
+export const isValidRes = (pokemon: any): pokemon is PokemonDetail => {
   return (
     typeof pokemon.pokeName === "string" &&
     typeof pokemon.sprites.front_default === "string"
