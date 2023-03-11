@@ -55,6 +55,7 @@ export default function Home() {
       </section>
       <div className="flex flex-row gap-5 items-center justify-center">
         <ArrowLeft
+          className="cursor-pointer"
           onClick={() => {
             if (pagination - 20 < MIN_API_PAGE) {
               alert("Minimal page reached");
@@ -64,6 +65,7 @@ export default function Home() {
           }}
         />
         <ArrowRight
+          className="cursor-pointer"
           onClick={() => {
             if (pagination + 20 > MAX_API_PAGE) {
               alert("Maximal page reached");
