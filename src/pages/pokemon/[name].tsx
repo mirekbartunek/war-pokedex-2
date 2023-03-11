@@ -35,7 +35,7 @@ export default function Pokemon() {
             {data?.name?.charAt(0)?.toUpperCase() + data?.name?.slice(1)!}
           </h1>
         </header>
-        <main>
+        <section className="flex flex-row">
           {data?.sprites.front_default && (
             <Image
               src={data?.sprites.front_default}
@@ -44,7 +44,16 @@ export default function Pokemon() {
               height={200}
             />
           )}
-        </main>
+
+          {data?.sprites.back_default && (
+            <Image
+              src={data.sprites.back_default}
+              alt={`${data.name} back image`}
+              width={200}
+              height={200}
+            />
+          )}
+        </section>
         <section>
           <h3 className="text-2xl">Stats</h3>
           <ul className="flex flex-col">
