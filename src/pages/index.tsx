@@ -4,13 +4,14 @@ import { PartialRes, Result } from "@/types/partialRes";
 import { Card } from "@/components/fe/Card/Card";
 import { useEffect, useState } from "react";
 import { ArrowLeft, ArrowRight } from "tabler-icons-react";
+import Link from "next/link";
 
 const MAX_API_PAGE = 1281;
 const MIN_API_PAGE = 0;
 
 export default function Home() {
   const [searchTerm, setSearchTerm] = useState<string>();
-  const [pagination, setPagination] = useState<number>(20);
+  const [pagination, setPagination] = useState<number>(21);
   const [filtered, setFiltered] = useState<Result[]>([]);
   const { data, isLoading } = useSWR<PartialRes>(
     `https://pokeapi.co/api/v2/pokemon?limit=${pagination}&offset=0`,
@@ -57,21 +58,21 @@ export default function Home() {
         <ArrowLeft
           className="cursor-pointer"
           onClick={() => {
-            if (pagination - 20 < MIN_API_PAGE) {
-              alert("Minimal page reached");
+            if (pagination - 21 < MIN_API_PAGE) {
+              alert("Min page reached");
               return;
             }
-            setPagination(pagination - 20);
+            setPagination(pagination - 21);
           }}
         />
         <ArrowRight
           className="cursor-pointer"
           onClick={() => {
-            if (pagination + 20 > MAX_API_PAGE) {
-              alert("Maximal page reached");
+            if (pagination + 21 > MAX_API_PAGE) {
+              alert("Max page reached");
               return;
             }
-            setPagination(pagination + 20);
+            setPagination(pagination + 21);
           }}
         />
       </div>

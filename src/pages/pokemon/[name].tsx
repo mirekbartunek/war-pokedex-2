@@ -7,6 +7,8 @@ import Image from "next/image";
 import ProgressBar from "@ramonak/react-progress-bar";
 import { FastAverageColor } from "fast-average-color";
 import { useState } from "react";
+import { capitalizer } from "@/components/be/capitalizer";
+import { typeColourPair } from "@/consts/typePair";
 
 export default function Pokemon() {
   const router = useRouter();
@@ -25,14 +27,15 @@ export default function Pokemon() {
       })
       .then((color) => setAverageColor(color.hex));
   }
-  if (isLoading) return <h1 className="m-auto text-9xl">Loading...</h1>;
-  if (error) return <h1 className="m-auto text-9xl">An error occurred</h1>;
+
+  if (isLoading) return <h1 className="text-center text-9xl">Loading...</h1>;
+  if (error) return <h1 className="text-center text-9xl">An error occurred</h1>;
   return (
     <>
       <main className="flex flex-col items-center justify-center">
         <header>
           <h1 className="text-3xl underline hover:italic align-center underline-offset-1">
-            {data?.name?.charAt(0)?.toUpperCase() + data?.name?.slice(1)!}
+            {data?.name && capitalizer(data.name)}
           </h1>
         </header>
         <section className="flex flex-row">
@@ -55,12 +58,11 @@ export default function Pokemon() {
           )}
         </section>
         <section>
-          <h3 className="text-2xl">Stats</h3>
+          <h3 className="text-2xl text-center">Stats</h3>
           <ul className="flex flex-col">
             {data?.stats.map((stat) => (
               <li key={stat.stat.name}>
-                {stat.stat.name.charAt(0).toUpperCase() +
-                  stat.stat.name.slice(1)}
+                {capitalizer(stat.stat.name)}
                 :
                 <ProgressBar
                   animateOnRender
@@ -71,7 +73,18 @@ export default function Pokemon() {
               </li>
             ))}
           </ul>
-          <article>{}</article>
+          <article className="flex-col mt-3 flex gap-1">
+            {data?.types.map((item) => (
+              <p
+                key={item.type.name}
+                className={`${
+                  typeColourPair[item.type.name]
+                } text-center rounded-lg p-2`}
+              >
+                {capitalizer(item.type.name)}
+              </p>
+            ))}
+          </article>
         </section>
       </main>
       <ArrowLeft
