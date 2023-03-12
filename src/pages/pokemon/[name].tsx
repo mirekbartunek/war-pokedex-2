@@ -36,7 +36,7 @@ export default function Pokemon() {
         <header>
           <h1
             className="text-3xl underline hover:italic align-center underline-offset-1 cursor-pointer"
-            onClick={() => navigator.clipboard.writeText(router.pathname)}
+            onClick={() => navigator.clipboard.writeText(router.asPath)}
           >
             {data?.name && capitalizer(data.name)}
           </h1>
