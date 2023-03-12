@@ -34,7 +34,10 @@ export default function Pokemon() {
     <>
       <main className="flex flex-col items-center justify-center">
         <header>
-          <h1 className="text-3xl underline hover:italic align-center underline-offset-1">
+          <h1
+            className="text-3xl underline hover:italic align-center underline-offset-1 cursor-pointer"
+            onClick={() => navigator.clipboard.writeText(router.pathname)}
+          >
             {data?.name && capitalizer(data.name)}
           </h1>
         </header>
