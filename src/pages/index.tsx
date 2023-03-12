@@ -4,7 +4,6 @@ import { PartialRes, Result } from "@/types/partialRes";
 import { Card } from "@/components/fe/Card/Card";
 import { useEffect, useState } from "react";
 import { ArrowLeft, ArrowRight } from "tabler-icons-react";
-import Link from "next/link";
 
 const MAX_API_PAGE = 1281;
 const MIN_API_PAGE = 0;
@@ -21,7 +20,9 @@ export default function Home() {
   useEffect(() => {
     if (isLoading) return;
     const updateData: Result[] = searchTerm
-      ? data?.results.filter((item) => item.name.includes(searchTerm!))!
+      ? data?.results.filter((item) =>
+          item.name.includes(searchTerm!.toLowerCase())
+        )!
       : data!.results;
     setFiltered(updateData);
   }, [searchTerm, data, isLoading]);
