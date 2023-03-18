@@ -12,12 +12,13 @@ import { typeColourPair } from "@/consts/typePair";
 
 export default function Pokemon() {
   const router = useRouter();
-  const [averageColor, setAverageColor] = useState<string>();
   const { name } = router.query;
   const { data, error, isLoading } = useSWR<PokemonDetail>(
     `https://pokeapi.co/api/v2/pokemon/${name}`,
     fetcher
   );
+  const [averageColor, setAverageColor] = useState<string>();
+
   if (data !== undefined) {
     const fac = new FastAverageColor();
     fac
@@ -27,9 +28,16 @@ export default function Pokemon() {
       })
       .then((color) => setAverageColor(color.hex));
   }
-
   if (isLoading) return <h1 className="text-center text-9xl">Loading...</h1>;
-  if (error) return <h1 className="text-center text-9xl">An error occurred</h1>;
+  if (error)
+    return (
+      <>
+        <h1 className="text-center text-8xl">
+          Something went wrong: {error.message}
+        </h1>
+        <p className="text-center text-5xl">Trying to refetch</p>
+      </>
+    );
   return (
     <>
       <main className="flex flex-col items-center justify-center">

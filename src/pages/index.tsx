@@ -4,6 +4,7 @@ import { PartialRes, Result } from "@/types/partialRes";
 import { Card } from "@/components/fe/Card/Card";
 import { useEffect, useState } from "react";
 import { ArrowLeft, ArrowRight } from "tabler-icons-react";
+import { router } from "next/client";
 
 const MAX_API_PAGE = 1281;
 const MIN_API_PAGE = 0;
@@ -49,7 +50,7 @@ export default function Home() {
         />
       </header>
       <section className="flex items-center justify-center">
-        <article className="flex flex-row flex-wrap gap-10">
+        <article className="flex flex-row flex-wrap gap-10 p-1">
           {filtered.map((item) => (
             <Card {...item} key={item.name} />
           ))}

@@ -1,5 +1,5 @@
 /**
- * @param toCapitalize - Letter to be capitalized
+ * @param toCapitalize - String to be capitalized
  * @return First letter of `toCapitalize` in upper case, returns `string`
  */
 
